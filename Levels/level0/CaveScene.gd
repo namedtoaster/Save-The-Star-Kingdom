@@ -10,7 +10,5 @@ extends Node2D
 func _ready():
 	Transition.intro()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func cave_collapse():
+	$Items/Collapse/AnimationPlayer.play("collapse")

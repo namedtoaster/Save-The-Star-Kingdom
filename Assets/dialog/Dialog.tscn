@@ -14,7 +14,6 @@ polygon = PoolVector2Array( 0, 0, 576, 0, 576, 88, 0, 88 )
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
 wait_time = 0.1
-autostart = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
 margin_left = 16.0
