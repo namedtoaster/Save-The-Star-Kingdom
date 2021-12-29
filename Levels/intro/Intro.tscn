@@ -1,0 +1,195 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/tiles/Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Levels/intro/Intro.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Packs/Fire/FireAsset.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/background/parallax_forest_pack/layers/parallax-forest-middle-trees.png" type="Texture" id=4]
+[ext_resource path="res://Assets/background/parallax_forest_pack/layers/parallax-forest-lights.png" type="Texture" id=5]
+[ext_resource path="res://Assets/background/parallax_forest_pack/layers/parallax-forest-front-trees.png" type="Texture" id=6]
+[ext_resource path="res://Assets/background/parallax_forest_pack/layers/parallax-forest-back-trees.png" type="Texture" id=7]
+
+[sub_resource type="TileSet" id=1]
+0/name = "parallax-forest-back-trees.png 0"
+0/texture = ExtResource( 7 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 272, 160 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "parallax-forest-front-trees.png 1"
+1/texture = ExtResource( 6 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 272, 160 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "parallax-forest-middle-trees.png 2"
+2/texture = ExtResource( 4 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 272, 160 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "parallax-forest-lights.png 3"
+3/texture = ExtResource( 5 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 240, 80 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+
+[sub_resource type="Animation" id=2]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 304, 0 ) ]
+}
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 800, 1 )
+flag_disable_z = true
+spread = 2.0
+gravity = Vector3( 30, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.3
+color = Color( 0.490196, 0.458824, 0.85098, 1 )
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sky" type="ColorRect" parent="."]
+margin_left = -200.0
+margin_top = -120.0
+margin_right = 512.0
+margin_bottom = 120.0
+color = Color( 0.0235294, 0.0352941, 0.109804, 0.823529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BackTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 542, 0 )
+
+[node name="TileMap" type="TileMap" parent="ParallaxBackground/BackTrees"]
+position = Vector2( 208, 8 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458765, 536870912, 0, -524284, 536870912, 0, 196595, 536870912, 0, 131076, 536870912, 0 )
+
+[node name="MiddleTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 1 )
+motion_mirroring = Vector2( 528, 0 )
+
+[node name="TileMap" type="TileMap" parent="ParallaxBackground/MiddleTrees"]
+position = Vector2( 208, 8 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458765, 536870914, 0, -524285, 536870914, 0, 196595, 536870914, 0, 131075, 536870914, 0 )
+
+[node name="FrontTrees" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 0, 8 )
+motion_mirroring = Vector2( 542, 0 )
+
+[node name="TileMap" type="TileMap" parent="ParallaxBackground/FrontTrees"]
+position = Vector2( 200, 0 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458765, 536870913, 0, -524284, 536870913, 0, 196595, 536870913, 0, 131076, 536870913, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/MoveRight = SubResource( 2 )
+
+[node name="Rain" type="Particles2D" parent="."]
+position = Vector2( 128, -136 )
+rotation = 1.5708
+emitting = false
+amount = 1200
+lifetime = 4.0
+process_material = SubResource( 3 )
+
+[node name="Ground" type="TileMap" parent="."]
+modulate = Color( 0.35, 0.35, 0.35, 1 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 0, 65551, 0, 0, 196601, 10, 0, 196602, 10, 0, 196603, 10, 0, 196604, 10, 0, 196605, 10, 0, 196606, 10, 0, 196607, 10, 0, 131072, 10, 0, 131073, 10, 0, 131074, 10, 0, 131075, 10, 0, 131076, 10, 0, 131077, 10, 0, 131078, 10, 0, 131079, 10, 0, 131080, 10, 0, 131081, 10, 0, 131082, 10, 0, 131083, 10, 0, 131084, 10, 0, 131085, 10, 0, 131086, 10, 0, 131087, 10, 0, 262137, 10, 0, 262138, 10, 0, 262139, 10, 0, 262140, 10, 0, 262141, 10, 0, 262142, 10, 0, 262143, 10, 0, 196608, 10, 0, 196609, 10, 0, 196610, 10, 0, 196611, 10, 0, 196612, 10, 0, 196613, 10, 0, 196614, 10, 0, 196615, 10, 0, 196616, 10, 0, 196617, 10, 0, 196618, 10, 0, 196619, 10, 0, 196620, 10, 0, 196621, 10, 0, 196622, 10, 0, 196623, 10, 0 )
+
+[node name="Fire" parent="." instance=ExtResource( 3 )]
+position = Vector2( 304, 8 )
+
+[node name="Hut" type="TileMap" parent="."]
+modulate = Color( 0.56, 0.56, 0.56, 1 )
+position = Vector2( 0, 16 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( -851929, 16, 0 )
+
+[node name="Timers" type="Node2D" parent="."]
+
+[node name="Timer2" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Timer" type="Timer" parent="Timers"]
+
+[node name="Timer3" type="Timer" parent="Timers"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+process_mode = 0
+
+[connection signal="timeout" from="Timers/Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timers/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timers/Timer3" to="." method="_on_Timer3_timeout"]

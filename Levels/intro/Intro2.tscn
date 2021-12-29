@@ -1,0 +1,113 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire7.png" type="Texture" id=1]
+[ext_resource path="res://Assets/tiles/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire8.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire11.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire10.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire12.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire3.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire6.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire9.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Packs/Fire/Middle_Fire/Middle_Fire5.png" type="Texture" id=13]
+[ext_resource path="res://Levels/intro/Intro2.gd" type="Script" id=14]
+[ext_resource path="res://Assets/dialog/Dialog.tscn" type="PackedScene" id=15]
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 800, 1 )
+flag_disable_z = true
+spread = 2.0
+gravity = Vector3( 30, 0, 0 )
+initial_velocity = 400.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.3
+color = Color( 0.490196, 0.458824, 0.85098, 1 )
+
+[sub_resource type="Animation" id=2]
+length = 2.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ) ]
+}
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://assets/font/super-legend-boy-font/SuperLegendBoy-4w8Y.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = SubResource( 3 )
+
+[node name="Intro2" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Rain" type="Particles2D" parent="."]
+position = Vector2( 0, -128 )
+rotation = 1.5708
+emitting = false
+amount = 1200
+lifetime = 4.0
+process_material = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.01165, 0.007, 0.1, 0.698039 )
+polygon = PoolVector2Array( -200, -120, 200, -120, 200, 120, -200, 120 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, 8 )
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( -917509, 19, 0, -983040, 20, 0, -589832, 17, 0, -589827, 24, 0, -589826, 24, 0, -655357, 536870929, 0, -393230, 536870930, 0, -458744, 18, 0, -327688, 24, 0, -393214, 24, 0, -393213, 24, 0, -262152, 24, 0, -262147, 24, 0, -327678, 26, 0, -196617, 24, 0, -131082, 24, 0, -65547, 24, 0, -14, 28, 0, -13, 28, 0, -12, 28, 0, -65530, 24, 0, -65525, 28, 0, -65524, 28, 0, -65523, 28, 0, 65522, 536870935, 0, 65525, 24, 0, 65530, 24, 0, 65535, 24, 0, 4, 24, 0, 6, 24, 0, 10, 23, 0, 131062, 25, 0, 393205, 24, 0, 393210, 24, 0, 393215, 24, 0, 327684, 24, 0, 327686, 24, 0, 720885, 24, 0, 720890, 27, 0, 720895, 24, 0, 655364, 24, 0, 655366, 536870943, 0, 917491, 29, 0, 917497, 29, 0, 917503, 29, 0, 851972, 29, 0, 851978, 30, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -64, 96 )
+texture = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "SmallFire"
+anims/SmallFire = SubResource( 2 )
+
+[node name="Dialog" parent="." instance=ExtResource( 15 )]
+position = Vector2( -192, -112 )
+
+[node name="Polygon2D" parent="Dialog" index="0"]
+scale = Vector2( 0.388889, 0.875452 )
+color = Color( 0.0966, 0.163223, 0.46, 0.741176 )
+
+[node name="RichTextLabel" parent="Dialog" index="2"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 66.0
+custom_fonts/normal_font = SubResource( 4 )
+text = "1
+2
+3
+4
+5
+6"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[editable path="Dialog"]
