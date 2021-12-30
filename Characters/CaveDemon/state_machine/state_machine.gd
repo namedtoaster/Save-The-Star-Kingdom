@@ -23,6 +23,7 @@ var current_state = null
 var _active = false setget set_active
 	
 func _ready():
+	set_process_input(false)
 	for child in get_children():
 		child.connect("finished", self, "_change_state")
 	initialize(START_STATE)
@@ -41,11 +42,10 @@ func set_active(value):
 		states_stack = []
 		current_state = null
 
-func _input(event):
-	current_state.handle_input(event)
 
 func _physics_process(delta):
-	current_state.update(delta)
+	pass
+	#current_state.update(delta)
 
 func _on_animation_finished(anim_name):
 	if not _active:

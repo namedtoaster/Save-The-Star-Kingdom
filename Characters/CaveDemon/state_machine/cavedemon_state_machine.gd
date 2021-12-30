@@ -1,10 +1,11 @@
 extends "state_machine.gd"
 
 func _ready():
+	set_process_input(false)
 	states_map = {
 		"idle": $Idle,
 		"move": $Move,
-		"jump": $Jump,
+		#"stagger": $Stagger,
 		"attack": $Attack
 	}
 
@@ -26,11 +27,12 @@ func _input(event):
 	Here we only handle input that can interrupt states, attacking in this case
 	otherwise we let the state node handle it
 	"""
-	if event.is_action_pressed("attack"):
-		# Cannot attack while jumping
-		if current_state == $Attack or current_state == $Jump:
-			return
-		_change_state("attack")
-		return
-	current_state.handle_input(event)
+#	if event.is_action_pressed("attack"):
+#		# Cannot attack while jumping
+#		if current_state == $Attack or current_state == $Jump:
+#			return
+#		_change_state("attack")
+#		return
+#	current_state.handle_input(event)
+	pass
 	
