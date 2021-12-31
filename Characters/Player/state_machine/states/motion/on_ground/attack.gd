@@ -11,4 +11,7 @@ func update(delta):
 	owner._velocity = Vector2.ZERO
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	._on_animation_finished(anim_name)
+	# Have to specify if this particular animation finishes
+	# Otherwise it'll be called when ANY animation finishes
+	if anim_name == "attack":
+		._on_animation_finished(anim_name)

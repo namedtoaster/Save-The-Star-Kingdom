@@ -2,7 +2,7 @@
 extends "../state.gd"
 
 var speed = 0.0
-var move_amount = 0.0
+var move_amount = Vector2(0.0, 0.0)
 
 export(float) var MAX_WALK_SPEED = 300
 export(float) var MAX_RUN_SPEED = 200
@@ -23,7 +23,7 @@ func update_look_direction(direction):
 	#owner.get_node("BodyPivot").set_scale(Vector2(direction.x, 1))
 	
 func update(delta):
-	owner.move_and_collide(move_amount) # or move_and_slide(move_amount / delta)
+	owner.move_and_slide(move_amount)
 		
 	.update(delta)
 			

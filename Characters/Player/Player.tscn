@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/Player/state_machine/player_state_machine.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Player/state_machine/states/motion/on_ground/move.gd" type="Script" id=2]
@@ -7,9 +7,25 @@
 [ext_resource path="res://Characters/Player/assets/Adventurer/adventurer-Sheet.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Player/Player.gd" type="Script" id=6]
 [ext_resource path="res://Characters/Player/state_machine/states/motion/on_ground/attack.gd" type="Script" id=7]
+[ext_resource path="res://Characters/Player/state_machine/states/motion/on_ground/stagger.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.6627, 11.7296 )
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SwordHitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack"
@@ -25,6 +41,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 47, 48, 49, 50, 51, 52 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -123,6 +151,27 @@ tracks/0/keys = {
 "values": [ 53, 54, 55, 56, 57, 58 ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "stagger"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 6, 12.5 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 6.5, 11 )
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 6 )
 speed = Vector2( 0, 100 )
@@ -144,17 +193,21 @@ script = ExtResource( 3 )
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 
+[node name="Stagger" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 hframes = 7
 vframes = 11
-frame = 58
+frame = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.60065 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
 anims/attack = SubResource( 2 )
 anims/fall = SubResource( 3 )
 anims/falling = SubResource( 4 )
@@ -162,10 +215,28 @@ anims/idle = SubResource( 5 )
 anims/jump = SubResource( 6 )
 anims/run = SubResource( 7 )
 anims/side_attack = SubResource( 8 )
+anims/stagger = SubResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.3, 0.3 )
+limit_left = 0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 11 )
+
+[node name="SwordHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitbox"]
+position = Vector2( 17.5, 2 )
+shape = SubResource( 12 )
+disabled = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Jump" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attack" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Stagger" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="body_entered" from="SwordHitbox" to="." method="_on_SwordHitbox_body_entered"]

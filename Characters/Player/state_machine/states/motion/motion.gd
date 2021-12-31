@@ -23,6 +23,7 @@ func update_look_direction(direction):
 		
 		var is_flipped = owner.get_node("Sprite").is_flipped_h()
 		owner.get_node("Sprite").set_flip_h(!is_flipped)
+		owner.get_node("SwordHitbox").scale.x = direction.x
 	if not direction.x in [-1, 1]:
 		return
 	#owner.get_node("BodyPivot").set_scale(Vector2(direction.x, 1))

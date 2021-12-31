@@ -5,7 +5,8 @@ func _ready():
 		"idle": $Idle,
 		"move": $Move,
 		"jump": $Jump,
-		"attack": $Attack
+		"attack": $Attack,
+		"stagger": $Stagger
 	}
 
 func _change_state(state_name):
@@ -33,4 +34,3 @@ func _input(event):
 		_change_state("attack")
 		return
 	current_state.handle_input(event)
-	

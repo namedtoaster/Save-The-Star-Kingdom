@@ -85,4 +85,8 @@ func move_horizontally(delta, direction):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	# Once the jump animation finishes, we want to transition to another animation until the jump state is complete
 	# The parent function will handle this logic
-	._on_animation_finished(anim_name)
+	
+	# Have to specify if this particular animation finishes
+	# Otherwise it'll be called when ANY animation finishes
+	if anim_name == "jump":
+		._on_animation_finished(anim_name)

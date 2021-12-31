@@ -44,8 +44,7 @@ func set_active(value):
 
 
 func _physics_process(delta):
-	pass
-	#current_state.update(delta)
+	current_state.update(delta)
 
 func _on_animation_finished(anim_name):
 	if not _active:

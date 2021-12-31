@@ -1,9 +1,9 @@
 extends "../motion.gd"
 
 func handle_input(event):
-	if event.is_action_pressed("jump") and self.name != "Attack":
+	if event.is_action_pressed("jump") and self.name != "Attack" and self.name != "Stagger":
 		emit_signal("finished", "jump")
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") and self.name != "Stagger":
 		emit_signal("finished", "attack")
 	
 	return .handle_input(event)

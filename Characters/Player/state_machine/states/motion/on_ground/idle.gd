@@ -10,7 +10,7 @@ func update(delta):
 	var input_direction = get_input_direction()
 	
 	# If the player is trying to move, exit the state and start the move state
-	if input_direction:
+	if input_direction and self.name != "Stagger":
 		emit_signal("finished", "move")
 		
 	.update(delta)
