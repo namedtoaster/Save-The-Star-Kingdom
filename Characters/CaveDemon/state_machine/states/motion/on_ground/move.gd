@@ -1,33 +1,32 @@
 extends "on_ground.gd"
 
-
-
 func enter():
-	speed = 0.0
-	owner._velocity = Vector2()
-
-	owner.get_node("AnimationPlayer").play("run")
+	speed = 10.0
 
 func handle_input(event):
 	return .handle_input(event)
 
 func update(delta):
-#	var input_direction = get_input_direction()
-#
-#	# If the player isn't inputing movement, stop and change to idle state
-#	if input_direction == Vector2(0,0):
-#		emit_signal("finished", "idle")
-#
-#	# Update the x velocity/position
-#	speed = MAX_RUN_SPEED if Input.is_action_pressed("run") else MAX_WALK_SPEED
-#	owner._velocity.x = input_direction.x * speed
+	var target = owner.target
+	var position = owner.position
+	
+	var dir = (target - position).normalized()
+	move_amount = Vector2(move_toward(position.x, target.x, dir.x * speed  * delta), move_toward(position.y, target.y, dir.y * speed * delta))
+	#move_and_collide(move_amount) # or move_and_slide(move_amount / delta)
 	
 	.update(delta)
-#	var collision_info = move(speed, input_direction)
-#	if not collision_info:
-#		return
-#	if speed == MAX_RUN_SPEED and collision_info.collider.is_in_group("environment"):
-#		return null
+
+
+func move_toward(orig : float, target : float, amount : float) -> float:
+		var result : float
+
+		if abs(orig - target) <= amount:
+			result = target
+		elif orig < target:
+			result = min(orig + amount, target)
+		elif orig > target:
+			result = max(orig - amount, target)
+		return result
 
 #func move(speed, direction):
 #	owner._velocity = direction.normalized() * speed
