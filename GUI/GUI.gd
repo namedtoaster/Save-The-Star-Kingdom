@@ -8,7 +8,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 	
 func set_life(value):
 	var new_val
