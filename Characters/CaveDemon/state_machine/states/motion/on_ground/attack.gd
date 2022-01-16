@@ -1,7 +1,8 @@
 extends "on_ground.gd"
 
 func enter():
-	owner.get_node("AnimationPlayer").play("attack")
+	pass
+	#owner.get_node("AnimationPlayer").play("attack")
 	
 func update(delta):
 	# Prevent the player from moving in the attack state

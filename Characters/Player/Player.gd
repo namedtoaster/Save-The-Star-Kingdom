@@ -1,6 +1,8 @@
 class_name Player
 extends Character
 
+var ladder = false
+
 signal direction_changed(new_direction)
 
 var look_direction = Vector2(1, 0) setget set_look_direction

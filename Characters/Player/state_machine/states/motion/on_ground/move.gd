@@ -22,6 +22,9 @@ func update(delta):
 	speed = MAX_RUN_SPEED if Input.is_action_pressed("run") else MAX_WALK_SPEED
 	owner._velocity.x = input_direction.x * speed
 	
+	if owner.ladder:
+		owner._velocity.y = input_direction.y * speed
+	
 	.update(delta)
 #	var collision_info = move(speed, input_direction)
 #	if not collision_info:

@@ -14,11 +14,11 @@ func handle_input(event):
 func get_input_direction():
 	var input_direction = Vector2()
 	input_direction.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
-	#input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	input_direction.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
 	return input_direction
 
 func update_look_direction(direction):
-	if direction and owner.look_direction != direction:
+	if direction.x and owner.look_direction != direction:
 		owner.look_direction = direction
 		
 		var is_flipped = owner.get_node("Sprite").is_flipped_h()
@@ -40,6 +40,12 @@ func update(delta):
 	# Otherwise, the y velocity will continue to increase and jumping will be ineffective (and if you're jumping you'll stick to the bottom of floors temporarily)
 	if (owner.is_on_floor() or owner.is_on_ceiling()):
 		owner._velocity.y = 0.0
+		
+	if owner.ladder:		
+		if owner.get_node("StateMachine").current_state.name != "Move":
+			emit_signal("finished", "move")
+	else:
+		owner.gravity = owner.GRAVITY
 		
 	.update(delta)
 			

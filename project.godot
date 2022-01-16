@@ -19,10 +19,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Character.gd"
 }, {
-"base": "Area2D",
+"base": "Reference",
 "class": "Coin",
 "language": "GDScript",
-"path": "res://Assets/Packs/coin/coin.gd"
+"path": "res://Assets/Interactables/Coin/coin.gd"
 }, {
 "base": "Character",
 "class": "Player",
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Save- The- Star- Kingdom"
-run/main_scene="res://Levels/level0/CaveScene.tscn"
+run/main_scene="res://Levels/level1/Field.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -76,6 +76,16 @@ run={
 left_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
 

@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Assets/tiles/Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/Tiles/Other/Tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/level0/CaveScene.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Packs/Staff/Staff.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/dialog/Dialog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Interactables/dialog_whatisthis/Dialog.tscn" type="PackedScene" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
 [ext_resource path="res://Characters/CaveDemon/CaveDemon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Images/Props/staff.png" type="Texture" id=9]
+[ext_resource path="res://Levels/transitions/exit/Exit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Interactables/DialogItem/DialogItem.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29, 63.5 )
@@ -41,9 +43,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 60, 160 ), Vector2( 60, 290 ) ]
 }
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 50 )
 
 [node name="CaveScene" type="Node2D"]
 script = ExtResource( 3 )
@@ -131,9 +130,13 @@ position = Vector2( 5371, 145 )
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Staff" parent="Items" instance=ExtResource( 4 )]
-position = Vector2( 448, 274 )
+[node name="Staff" parent="Items" instance=ExtResource( 11 )]
+position = Vector2( 654, 268 )
 DIALOG_NODE = NodePath("../../Dialogs/Staff")
+DIALOG_ACTION = "staff"
+
+[node name="Sprite" parent="Items/Staff" index="0"]
+texture = ExtResource( 9 )
 
 [node name="Collapse" type="Node2D" parent="Items"]
 position = Vector2( 7, -65 )
@@ -158,7 +161,7 @@ anims/collapse = SubResource( 3 )
 [node name="Staff" parent="Dialogs" instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 228, 251 )
+position = Vector2( 360, 268 )
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
 
@@ -174,11 +177,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Exit" type="Area2D" parent="."]
-position = Vector2( 7571, 297 )
+[node name="Exit" parent="." instance=ExtResource( 10 )]
+position = Vector2( 7487, 287 )
+EXIT_SCENE = "res://Levels/level1/Field.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
-position = Vector2( 0, -40 )
-shape = SubResource( 4 )
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_Exit_body_entered"]
 
-[connection signal="body_entered" from="Exit" to="." method="_on_Exit_body_entered"]
+[editable path="Items/Staff"]

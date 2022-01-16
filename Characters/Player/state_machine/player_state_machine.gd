@@ -27,10 +27,16 @@ func _input(event):
 	Here we only handle input that can interrupt states, attacking in this case
 	otherwise we let the state node handle it
 	"""
-	if event.is_action_pressed("attack"):
-		# Cannot attack while jumping
-		if current_state == $Attack or current_state == $Jump:
-			return
-		_change_state("attack")
-		return
-	current_state.handle_input(event)
+	pass
+	"""
+	Attack is being "entered" twice because this script's parent is calling
+	current_state.handle_input(event) as well. Commented out for now
+	(Not sure why this was added from the code that I'm borrowing from)
+	"""
+#	if event.is_action_pressed("attack"):
+#		# Cannot attack while jumping
+#		if current_state == $Attack or current_state == $Jump:
+#			return
+#		_change_state("attack")
+#		return
+	#current_state.handle_input(event)
