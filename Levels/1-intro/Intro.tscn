@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Tiles/Other/Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Levels/intro/Intro.gd" type="Script" id=2]
+[ext_resource path="res://Levels/1-intro/Intro.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Level_Items/Fire/FireAsset.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Background_Items/Other/Parallax_forest_pack/Images/parallax-forest-middle-trees.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Background_Items/Other/Parallax_forest_pack/Images/parallax-forest-lights.png" type="Texture" id=5]

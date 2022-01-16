@@ -2,18 +2,18 @@
 extends RichTextLabel
 
 # Variables
-var dialog = [
-	"test",
-	"test1",
-	"test2"]
 var page = 0
 
 # Functions
 func _ready():
+	var dialog = owner.dialog
+	
 	set_bbcode(dialog[page])
 	set_visible_characters(0)
 
 func _input(event):
+	var dialog = owner.dialog
+	
 	if InputEventMouseButton && event.is_action_pressed("left_click"):
 		if get_visible_characters() > get_total_character_count():
 			if page < dialog.size()-1:
