@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Interactables/Dialog/DialogItem/DialogItem.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://Assets/Tiles/Other/Tileset.tres" type="TileSet" id=7]
 [ext_resource path="res://Assets/Images/Backgrounds/Market/part_of_road_kill_market__by_fool_d18fdid.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Interactables/Ladder/Ladder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Images/NPCs/woman2.jpg" type="Texture" id=10]
+[ext_resource path="res://Assets/Images/NPCs/man1.jpg" type="Texture" id=11]
+[ext_resource path="res://Assets/Images/NPCs/woman1.jpg" type="Texture" id=12]
+[ext_resource path="res://Assets/Images/NPCs/man2.jpg" type="Texture" id=13]
+[ext_resource path="res://Assets/Images/NPCs/old_man.png" type="Texture" id=14]
 
 [node name="City" type="Node2D"]
 script = ExtResource( 6 )
@@ -100,16 +105,155 @@ position = Vector2( 2226, -32 )
 [node name="Ladder6" parent="Items/Ladders" instance=ExtResource( 9 )]
 position = Vector2( 2030, -160 )
 
+[node name="Ladder10" parent="Items/Ladders" instance=ExtResource( 9 )]
+position = Vector2( 2513, -288 )
+
 [node name="DialogItems" type="Node2D" parent="Items"]
 
-[node name="Person" parent="Items/DialogItems" instance=ExtResource( 2 )]
+[node name="MarketWoman" parent="Items/DialogItems" instance=ExtResource( 2 )]
 position = Vector2( 751, 143 )
-DIALOG_NODE = NodePath("../../../Dialogs/Person")
+DIALOG_NODE = NodePath("../../../Dialogs/MarketWoman")
+
+[node name="MarketMan" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 667, 22 )
+DIALOG_NODE = NodePath("../../../Dialogs/MarketMan")
+
+[node name="MarketWoman6" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 1228, 21 )
+DIALOG_NODE = NodePath("../../../Dialogs/MarketWoman6")
+
+[node name="MarketMan3" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 2045, 21 )
+DIALOG_NODE = NodePath("../../../Dialogs/MarketMan3")
+
+[node name="MarketMan6" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 1692, 147 )
+DIALOG_NODE = NodePath("../../../Dialogs/MarketMan6")
+
+[node name="MarketMan4" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 1231, -235 )
+DIALOG_NODE = NodePath("../../../Dialogs/MarketMan4")
+
+[node name="Wizard" parent="Items/DialogItems" instance=ExtResource( 2 )]
+position = Vector2( 2448, -240 )
+DIALOG_NODE = NodePath("../../../Dialogs/Wizard")
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="MarketWoman" type="Node2D" parent="NPCs"]
+position = Vector2( 759, 150 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+
+[node name="MarketWoman2" type="Node2D" parent="NPCs"]
+position = Vector2( 1541, 22 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman2"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+
+[node name="MarketWoman3" type="Node2D" parent="NPCs"]
+position = Vector2( 1407, 279 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman3"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 12 )
+
+[node name="MarketWoman4" type="Node2D" parent="NPCs"]
+position = Vector2( 2175, -233 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman4"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="MarketWoman5" type="Node2D" parent="NPCs"]
+position = Vector2( 1297, 152 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman5"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="MarketWoman6" type="Node2D" parent="NPCs"]
+position = Vector2( 1216, 24 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketWoman6"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="MarketMan" type="Node2D" parent="NPCs"]
+position = Vector2( 655, 23 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="MarketMan2" type="Node2D" parent="NPCs"]
+position = Vector2( 1719, -106 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan2"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="MarketMan3" type="Node2D" parent="NPCs"]
+position = Vector2( 2046, 23 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan3"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 11 )
+
+[node name="MarketMan4" type="Node2D" parent="NPCs"]
+position = Vector2( 1230, -233 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan4"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+
+[node name="MarketMan5" type="Node2D" parent="NPCs"]
+position = Vector2( 576, 279 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan5"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+
+[node name="MarketMan6" type="Node2D" parent="NPCs"]
+position = Vector2( 1693, 150 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/MarketMan6"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 13 )
+
+[node name="Wizard" type="Node2D" parent="NPCs"]
+position = Vector2( 2452, -234 )
+
+[node name="Sprite" type="Sprite" parent="NPCs/Wizard"]
+position = Vector2( 0, 3 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 14 )
 
 [node name="Dialogs" type="Node2D" parent="."]
 
-[node name="Person" parent="Dialogs" instance=ExtResource( 3 )]
-dialog = [ "Would you like to buy something" ]
+[node name="MarketWoman" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Welcome to the market!", "Would you like to buy something?" ]
+
+[node name="MarketMan" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Hello there! May I interest you in some melons?" ]
+
+[node name="MarketWoman6" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "I have some pretty flowers to buy!" ]
+
+[node name="MarketMan3" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Hggrrgghww..." ]
+
+[node name="MarketMan6" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Meats! Get your meats!" ]
+
+[node name="MarketMan4" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Are you looking for somebody?", "...", "I don't really know that many people here, but I do know there's some crazy old man that's been making a fuss", "Maybe he can help?", "He's just ahead" ]
+
+[node name="Wizard" parent="Dialogs" instance=ExtResource( 3 )]
+dialog = [ "Wuh...", "YAH!", "...", "Who are you?", "Ah yes, of course!", "...", "Looking for something eh?", "Well, I may just be a crazy old man, but I'm sure I can help", "But before I do!", "You need to help me!", "I'm too old and feeble anyway...", "Just go up that ladder and take care of those pests!", "And when you're done, just come back here.", "Good luck!", "..." ]
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 228, 251 )
@@ -118,5 +262,6 @@ position = Vector2( 228, 251 )
 
 [node name="Exit" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2723, -355 )
+EXIT_SCENE = "res://Levels/5-FIGHT_city/FIGHT_City.tscn"
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_Exit_body_entered"]
