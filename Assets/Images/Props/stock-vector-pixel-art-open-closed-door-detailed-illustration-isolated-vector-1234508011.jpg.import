@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ladder_tile.png-d358471905c8d4c3b27e7c540560c46d.stex"
+path="res://.import/stock-vector-pixel-art-open-closed-door-detailed-illustration-isolated-vector-1234508011.jpg-2339ccf38c36cd1725a36e43fc9e40a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/Interactables/Ladder/ladder_tile.png"
-dest_files=[ "res://.import/ladder_tile.png-d358471905c8d4c3b27e7c540560c46d.stex" ]
+source_file="res://Assets/Images/Props/stock-vector-pixel-art-open-closed-door-detailed-illustration-isolated-vector-1234508011.jpg"
+dest_files=[ "res://.import/stock-vector-pixel-art-open-closed-door-detailed-illustration-isolated-vector-1234508011.jpg-2339ccf38c36cd1725a36e43fc9e40a1.stex" ]
 
 [params]
 

@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Save- The- Star- Kingdom"
-run/main_scene="res://Levels/4-city/City.tscn"
+run/main_scene="res://Levels/5-FIGHT_city/FIGHT_City.tscn"
 config/icon="res://icon.png"
 
 [autoload]

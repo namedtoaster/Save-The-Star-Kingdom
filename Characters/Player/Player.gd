@@ -5,6 +5,7 @@ var ladder = false
 var ladder_ready = false
 
 signal direction_changed(new_direction)
+signal kill()
 
 var look_direction = Vector2(1, 0) setget set_look_direction
 var GUI
@@ -61,3 +62,4 @@ func _on_SwordHitbox_body_entered(body):
 		body.set_dead(true)
 		
 		GUI.set_magic(20)
+		emit_signal("kill")

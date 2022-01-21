@@ -47,7 +47,7 @@ radius = 77.0
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 16.1651 )
 
-[node name="CaveDemon" type="KinematicBody2D"]
+[node name="CaveDemon" type="KinematicBody2D" groups=["Enemies"]]
 script = ExtResource( 3 )
 
 [node name="StateMachine" type="Node" parent="."]

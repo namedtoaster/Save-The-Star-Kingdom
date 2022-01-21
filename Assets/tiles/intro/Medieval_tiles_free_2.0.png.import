@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Medieval_tiles_free_2.0.png-e861cbc08d73173f33c22685aa1b0af1.stex"
+path="res://.import/Medieval_tiles_free_2.0.png-43a064cf42eba38c58571b61153aaaff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tiles/intro/Medieval_tiles_free_2.0.png"
-dest_files=[ "res://.import/Medieval_tiles_free_2.0.png-e861cbc08d73173f33c22685aa1b0af1.stex" ]
+source_file="res://Assets/Tiles/intro/Medieval_tiles_free_2.0.png"
+dest_files=[ "res://.import/Medieval_tiles_free_2.0.png-43a064cf42eba38c58571b61153aaaff.stex" ]
 
 [params]
 
